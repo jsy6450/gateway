@@ -1,5 +1,5 @@
 server:
-  port: 8080
+  port: 8088
 
 ---
 
@@ -24,6 +24,14 @@ spring:
           uri: http://localhost:8084
           predicates:
             - Path= /mypages/**
+        - id: delivery
+          uri: http://localhost:8085
+          predicates:
+            - Path= /deliveries/**,/cancellations/**
+        - id: deliverycenter
+          uri: http://localhost:8086
+          predicates:
+            - Path= /deliverypages/**
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -61,7 +69,17 @@ spring:
         - id: customercenter
           uri: http://customercenter:8080
           predicates:
-            - Path= /mypages/**
+            - Path= /mypages/**    
+        - id: delivery
+          uri: http://delivery:8080
+          predicates:
+            - Path= /deliveries/**,/cancellations/**
+        - id: deliverycenter
+          uri: http://deliverycenter:8080
+          predicates:
+            - Path= /deliverypages/**
+
+
       globalcors:
         corsConfigurations:
           '[/**]':
@@ -75,3 +93,4 @@ spring:
 
 server:
   port: 8080
+
